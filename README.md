@@ -19,3 +19,23 @@ This page lets customers pick their case, switches, and keycaps. It needs a Meta
 This page explains different switch types (linear, tactile, clicky) with sound and feel details. It needs a Metaobject for "Switch Profile" that stores name, sound level, feel, and an image for each switch.
 3. Community Builds / Gallery Page
 This page shows keyboards built by real customers. It needs a Metaobject for "Featured Build" that stores the builder's name, keyboard parts used, and photos.
+
+## 1.2-----------------------------------------------------------------------------------------------------
+# Step 1.1 — Filter Inventory
+#	Filter Name	 File	                      What It Changes
+1	money	     blocks/price.liquid	           Turns the raw price number into a real price with currency (e.g. R499.00)
+2	image_url	 sections/main-product.liquid	Resizes the main product image so it loads faster and fits the page
+3	truncate	 sections/main-product.liquid	Cuts the product description short so it does not take too much space
+4	strip_html	 sections/product-list.liquid	Removes HTML tags from the collection description so only clean text shows
+5	upcase	     snippets/product-card.liquid	    Makes the product title show in all capital letters on the collection card
+# Step 1.2 — Conditional Logic Plan
+
+Object used: product.compare_at_price
+
+Logic:
+If product.compare_at_price is greater than product.price, the product is on sale.
+
+True branch: Show a "Sale" badge and show both the old price (crossed out) and the new lower price.
+False branch: Show only the normal price, no badge.
+
+File it will live in: blocks/price.liquid
