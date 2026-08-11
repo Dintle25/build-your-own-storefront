@@ -1,0 +1,54 @@
+{% doc %}
+  Renders a bar showing how loud a switch is, from 1 (quiet) to 5 (loud).
+  Reusable in any section where sound level matters.
+{% enddoc %}
+
+<div class="sound-meter">
+ <span class="sound-meter__label">Noise Level</span>
+  <div class="sound-meter__bars">
+    {% for i in (1..5) %}
+      <span class="sound-meter__bar{% if i <= block.settings.noise_level %} sound-meter__bar--filled{% endif %}"></span>
+    {% endfor %}
+  </div>
+</div>
+
+{% stylesheet %}
+  .sound-meter__bars {
+    display: flex;
+    gap: 4px;
+    margin-top: 4px;
+  }
+
+  .sound-meter__bar {
+    width: 20px;
+    height: 8px;
+    background: #ddd;
+    border-radius: 2px;
+  }
+
+  .sound-meter__bar--filled {
+    background: #000;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.sound_meter",
+  "settings": [
+    {
+      "type": "range",
+      "id": "noise_level",
+      "label": "t:settings.noise_level",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 3
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.sound_meter"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,63 @@
+{% doc %}
+  Renders a small label + value badge, e.g. "Actuation Force: 45g".
+  Reusable on product pages or anywhere a spec needs highlighting.
+{% enddoc %}
+
+<span class="spec-badge spec-badge--{{ block.settings.badge_style }}">
+  <strong>{{ block.settings.spec_label }}:</strong> {{ block.settings.spec_value }}
+</span>
+
+{% stylesheet %}
+  .spec-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    margin: 2px;
+  }
+
+  .spec-badge--solid {
+    background: #000;
+    color: #fff;
+  }
+
+  .spec-badge--outline {
+    border: 1px solid #000;
+    color: #000;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.spec_badge",
+  "settings": [
+    {
+      "type": "text",
+      "id": "spec_label",
+      "label": "t:settings.spec_label",
+      "default": "Actuation Force"
+    },
+    {
+      "type": "text",
+      "id": "spec_value",
+      "label": "t:settings.spec_value",
+      "default": "45g"
+    },
+    {
+      "type": "select",
+      "id": "badge_style",
+      "label": "t:settings.badge_style",
+      "options": [
+        { "value": "solid", "label": "t:options.solid" },
+        { "value": "outline", "label": "t:options.outline" }
+      ],
+      "default": "solid"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.spec_badge"
+    }
+  ]
+}
+{% endschema %}

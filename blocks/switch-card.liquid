@@ -1,0 +1,74 @@
+{% doc %}
+  Renders a card showing one keyboard switch type: name, image, and feel description.
+  Intended for use inside the Switch Showcase section.
+{% enddoc %}
+
+<div class="switch-card" style="--switch-card-color: {{ block.settings.switch_color | default: '#000000' }};">
+  {% if block.settings.image %}
+    <div class="switch-card__image">
+      {{ block.settings.image | image_url: width: 300 | image_tag: loading: 'lazy' }}
+    </div>
+  {% endif %}
+  <h3 class="switch-card__name">{{ block.settings.switch_name }}</h3>
+  <p class="switch-card__feel">{{ block.settings.feel_description }}</p>
+  {% content_for 'blocks' %}
+</div>
+
+{% stylesheet %}
+  .switch-card {
+    border: 2px solid var(--switch-card-color, #000);
+    border-radius: 8px;
+    padding: 16px;
+    max-width: 240px;
+  }
+
+  .switch-card__image img {
+    width: 100%;
+    border-radius: 4px;
+  }
+
+  .switch-card__name {
+    margin: 8px 0 4px;
+  }
+
+  .switch-card__feel {
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.switch_card",
+  "settings": [
+    {
+      "type": "text",
+      "id": "switch_name",
+      "label": "t:settings.switch_name",
+      "default": "Linear Switch"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:settings.image"
+    },
+    {
+      "type": "textarea",
+      "id": "feel_description",
+      "label": "t:settings.feel_description",
+      "default": "Smooth and quiet, no tactile bump."
+    },
+    {
+      "type": "color",
+      "id": "switch_color",
+      "label": "t:settings.switch_color",
+      "default": "#000000"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.switch_card"
+    }
+  ]
+}
+{% endschema %}
