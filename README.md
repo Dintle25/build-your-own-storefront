@@ -47,3 +47,37 @@ Step 1.3 — Settings Plan
 3	switch_color	color	blocks/switch-card.liquid	Changes the accent border color of a switch card
 4	noise_level	range	blocks/sound-meter.liquid	Changes how many bars are filled in (how loud it looks)
 5	badge_style	select	blocks/spec-badge.liquid	Switches badge look between solid or outline style
+
+## 1.4 ------------------------------------------------------------------------------------------------
+# Step 1.1 — Metafield Plan
+
+Resource type: Product
+
+Namespace.key: custom.actuation_force
+Type: Number (integer)
+
+What it shows: The actuation force of the keyboard's switch, in grams (e.g. "45g"). It will show as a small spec line under the price on the product page, using our existing Spec Badge block from Day 3.
+
+# Step 1.2 — Metaobject Plan
+
+Metaobject type: switch_profile
+
+Fields:
+
+switch_name — single line text (e.g. "Tactile", "Linear", "Clicky")
+sound_level — number (1 to 5, how loud the switch is)
+feel_description — single line text (short description of how it feels)
+
+What it represents: One reusable switch profile entry, like "Tactile switch info." The same entry can be linked to many keyboard products that use that same switch type, instead of typing the same info again for every product.
+
+How products reach it: Through a metafield of type List of metaobject references, so one keyboard product can link to one or more switch profiles.
+
+# Step 1.3 — Integration Plan
+
+File: blocks/spec-badge.liquid (for the metafield)
+File: blocks/switch-card.liquid (for the metaobject)
+
+Blank state:
+
+If custom.actuation_force is blank, the Spec Badge does not render at all — no empty badge shape shows.
+If a product has no linked switch profiles, the Switch Card block section does not render any cards — no empty boxes or headings show.
