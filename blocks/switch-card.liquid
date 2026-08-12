@@ -1,18 +1,19 @@
 {% doc %}
-  Renders a card showing one keyboard switch type: name, image, and feel description.
+  Renders a card showing one keyboard switch type, pulling data from a linked Switch Profile metaobject entry.
   Intended for use inside the Switch Showcase section.
 {% enddoc %}
 
-<div class="switch-card" style="--switch-card-color: {{ block.settings.switch_color | default: '#000000' }};">
-  {% if block.settings.image %}
-    <div class="switch-card__image">
-      {{ block.settings.image | image_url: width: 300 | image_tag: loading: 'lazy' }}
-    </div>
-  {% endif %}
-  <h3 class="switch-card__name">{{ block.settings.switch_name }}</h3>
-  <p class="switch-card__feel">{{ block.settings.feel_description }}</p>
-  {% content_for 'blocks' %}
-</div>
+{% if block.settings.switch_profile != blank %}
+  <div class="switch-card" style="--switch-card-color: {{ block.settings.switch_color | default: '#000000' }};">
+    {% if block.settings.image %}
+      <div class="switch-card__image">
+        {{ block.settings.image | image_url: width: 300 | image_tag: loading: 'lazy' }}
+      </div>
+    {% endif %}
+    <h3 class="switch-card__name">{{ block.settings.switch_profile.switch_name.value }}</h3>
+    <p class="switch-card__feel">{{ block.settings.switch_profile.feel_description.value }}</p>
+  </div>
+{% endif %}
 
 {% stylesheet %}
   .switch-card {
@@ -42,21 +43,15 @@
   "name": "t:names.switch_card",
   "settings": [
     {
-      "type": "text",
-      "id": "switch_name",
-      "label": "t:settings.switch_name",
-      "default": "Linear Switch"
+      "type": "metaobject",
+      "id": "switch_profile",
+      "metaobject_type": "switch_profile",
+      "label": "t:settings.switch_profile"
     },
     {
       "type": "image_picker",
       "id": "image",
       "label": "t:settings.image"
-    },
-    {
-      "type": "textarea",
-      "id": "feel_description",
-      "label": "t:settings.feel_description",
-      "default": "Smooth and quiet, no tactile bump."
     },
     {
       "type": "color",

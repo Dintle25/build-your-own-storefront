@@ -318,8 +318,7 @@
           "type": "switch-card",
           "name": "t:names.switch_card",
           "settings": {
-            "switch_name": "Tactile",
-            "feel_description": "A noticeable bump partway down, quiet click.",
+            "switch_profile": "tactile",
             "switch_color": "#000000"
           },
           "blocks": {}
@@ -328,8 +327,7 @@
           "type": "switch-card",
           "name": "t:names.switch_card",
           "settings": {
-            "switch_name": "Linear Switch",
-            "feel_description": "Smooth and quiet, no tactile bump.",
+            "switch_profile": "",
             "switch_color": "#000000"
           },
           "blocks": {}
@@ -338,8 +336,7 @@
           "type": "switch-card",
           "name": "t:names.switch_card",
           "settings": {
-            "switch_name": "Clicky",
-            "feel_description": "Bump plus an audible click sound.",
+            "switch_profile": "",
             "switch_color": "#000000"
           },
           "blocks": {}

@@ -679,6 +679,7 @@
     "below_media": "Below media"
   },
   "settings": {
+    "switch_profile": "Switch profile",
     "switch_name": "Switch name",
     "feel_description": "Feel description",
     "noise_level": "Noise level",
