@@ -1,11 +1,13 @@
 {% doc %}
-  Renders a small label + value badge, e.g. "Actuation Force: 45g".
+  Renders a small spec badge pulling the Actuation Force metafield from a selected product.
   Reusable on product pages or anywhere a spec needs highlighting.
 {% enddoc %}
 
-<span class="spec-badge spec-badge--{{ block.settings.badge_style }}">
-  <strong>{{ block.settings.spec_label }}:</strong> {{ block.settings.spec_value }}
-</span>
+{% if block.settings.product.metafields.custom.actuation_force != blank %}
+  <span class="spec-badge spec-badge--{{ block.settings.badge_style }}">
+    <strong>Actuation Force:</strong> {{ block.settings.product.metafields.custom.actuation_force.value }}g
+  </span>
+{% endif %}
 
 {% stylesheet %}
   .spec-badge {
@@ -32,16 +34,9 @@
   "name": "t:names.spec_badge",
   "settings": [
     {
-      "type": "text",
-      "id": "spec_label",
-      "label": "t:settings.spec_label",
-      "default": "Actuation Force"
-    },
-    {
-      "type": "text",
-      "id": "spec_value",
-      "label": "t:settings.spec_value",
-      "default": "45g"
+      "type": "product",
+      "id": "product",
+      "label": "t:settings.product"
     },
     {
       "type": "select",

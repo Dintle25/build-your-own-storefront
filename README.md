@@ -81,3 +81,39 @@ Blank state:
 
 If custom.actuation_force is blank, the Spec Badge does not render at all — no empty badge shape shows.
 If a product has no linked switch profiles, the Switch Card block section does not render any cards — no empty boxes or headings show.
+
+## 1.5---------------------------------------------------------------------------------------
+# Step 1.1 — Threshold Plan
+
+Setting: free_shipping_threshold, type number
+
+Scope: Global (config/settings_schema.json). A store normally has one shipping rule for the whole cart, not different rules per section. So this belongs in global cart settings.
+
+Default value: 500 (R500)
+
+Enable/disable checkbox: enable_free_shipping_bar
+
+# Step 1.2 — Messaging Plan
+
+Still short of the threshold:
+
+"You're R{{ remaining_amount }} away from free shipping!"
+
+Threshold met:
+
+"You've unlocked free shipping!"
+
+When off or threshold is 0: The whole progress bar block does not render at all — nothing shows, no empty space left behind.
+
+# Step 1.3 — Integration Plan
+
+Target file: snippets/cart-drawer.liquid (the shipping bar markup goes directly inside this file, since it's rendered as part of the cart-drawer section)
+
+Does this file get re-rendered on cart change? Yes. Looking at assets/component-cart-items.js, when a cart line updates, the code calls morphSection(this.sectionId, ...) using HTML returned from the server. This section ID covers the whole cart drawer, and since cart-drawer.liquid is part of that section's rendered output, our shipping bar will automatically update whenever the section is morphed — no extra work needed.
+
+Do we need new JavaScript? No. The file already listens for cartLinesUpdate events (see #handleCartUpdate), and when the cart changes, it either:
+
+Uses the HTML already sent back from the server (sections[this.sectionId]), or
+Calls sectionRenderer.renderSection(...) to fetch a fresh HTML fragment
+
+Since our shipping bar is plain Liquid markup inside this same section, it gets included in that same server-rendered HTML automatically. We don't need to write any new fetch calls or event listeners — the existing flow already covers it.

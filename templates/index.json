@@ -301,8 +301,7 @@
           "type": "spec-badge",
           "name": "t:names.spec_badge",
           "settings": {
-            "spec_label": "Actuation Force",
-            "spec_value": "45g",
+            "product": "vantage-tkl-mechanical-keyboard",
             "badge_style": "solid"
           },
           "blocks": {}
