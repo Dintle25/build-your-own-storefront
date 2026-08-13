@@ -260,6 +260,11 @@
     "blog_posts_editorial": "Blog posts: Editorial",
     "button": "Button",
     "buttons": "Buttons",
+    "build_spotlight": "Build Spotlight",
+    "build_story": "Build Story",
+    "build_spec_highlight": "Spec Highlight",
+    "build_question": "Build Question",
+    "build_variant_picker": "Variant Picker",
     "caption": "Caption",
     "card": "Card",
     "carousel": "Carousel",
@@ -679,6 +684,8 @@
     "below_media": "Below media"
   },
   "settings": {
+    "story": "Story",
+    "faq_entry": "FAQ entry",
     "switch_profile": "Switch profile",
     "switch_name": "Switch name",
     "feel_description": "Feel description",

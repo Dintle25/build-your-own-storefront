@@ -1,0 +1,44 @@
+<div class="build-story">
+  {%- if block.settings.heading != blank -%}
+    <h2 class="build-story__heading">{{ block.settings.heading }}</h2>
+  {%- endif -%}
+  <div class="build-story__text">
+    {{ block.settings.story | strip_html | truncate: 400 }}
+  </div>
+</div>
+
+{% stylesheet %}
+  .build-story__heading {
+    margin-block-end: 8px;
+  }
+
+  .build-story__text {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.build_story",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:settings.heading",
+      "default": "Built from real wood"
+    },
+    {
+      "type": "richtext",
+      "id": "story",
+      "label": "t:settings.story",
+      "default": "<p>Every Ember keyboard starts as a block of walnut...</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.build_story"
+    }
+  ]
+}
+{% endschema %}

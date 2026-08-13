@@ -1,0 +1,41 @@
+{% if block.settings.product.metafields.custom.frame_material != blank %}
+  <div class="build-spec-highlight">
+    <span class="build-spec-highlight__label">Frame Material:</span>
+    <span class="build-spec-highlight__value">
+      {{ block.settings.product.metafields.custom.frame_material | metafield_text }}
+    </span>
+  </div>
+{% endif %}
+
+{% stylesheet %}
+  .build-spec-highlight {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+    border: 1px solid rgb(var(--color-foreground-rgb) / var(--opacity-10-25));
+    border-radius: 6px;
+    width: fit-content;
+  }
+
+  .build-spec-highlight__label {
+    font-weight: 600;
+    margin-right: 4px;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.build_spec_highlight",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "t:settings.product"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.build_spec_highlight"
+    }
+  ]
+}
+{% endschema %}
