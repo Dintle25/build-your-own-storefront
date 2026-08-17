@@ -117,3 +117,41 @@ Uses the HTML already sent back from the server (sections[this.sectionId]), or
 Calls sectionRenderer.renderSection(...) to fetch a fresh HTML fragment
 
 Since our shipping bar is plain Liquid markup inside this same section, it gets included in that same server-rendered HTML automatically. We don't need to write any new fetch calls or event listeners — the existing flow already covers it.
+
+## 1.6 -----------------------------------------------------------------------------------------------
+# Step 1.1 — Collection & Filter Plan
+
+Collection: All Keyboards (handle: all-keyboards)
+
+# 2 filter dimensions:
+
+Switch Type (option: Linear, Tactile, Clicky) — a list filter
+Price — using price_range
+
+Data gap: Right now, not every keyboard product has a Switch Type option set as a real variant option. Some products may only have Color as an option. I need to add Switch Type as a proper option on each keyboard product so it shows up as a filter.
+
+Filters block settings I will change:
+
+filter_style → change from default to Drawer, so filters open in a side panel instead of a plain list. This makes shopping easier on mobile.
+enable_sorting → turn ON, so customers can sort by price (low to high, high to low).
+# Step 1.2 — Swatch Plan
+
+Product: Apex 60% Compact Mechanical Keyboard
+Option: Color
+
+Swatch values:
+
+Black — solid black swatch
+White — solid white swatch
+Purple — solid purple swatch
+
+Where swatches show:
+
+Collection grid card, using blocks/swatches.liquid
+Product page variant picker, using blocks/variant-picker.liquid's show_swatches setting
+
+# Step 2.1
+
+We are not creating a new section or block for filtering because sections/main-collection.liquid already calls content_for 'block', type: 'filters', which renders the existing blocks/filters.liquid — a fully built filtering and sorting UI with its own settings.
+
+Swatch data comes directly from each product's option values in Shopify Admin — blocks/swatches.liquid checks product_option.values | map: 'swatch' and only renders swatches if a real swatch image/color has been assigned to that option value.

@@ -1,0 +1,108 @@
+<div
+  class="build-spotlight build-spotlight--{{ section.settings.layout }}"
+  style="
+    --build-spotlight-gap: {{ section.settings.gap }}px;
+    --build-spotlight-bg: {{ section.settings.background_color | default: 'transparent' }};
+  "
+>
+  <div class="build-spotlight__media">
+    {%- if section.settings.product.featured_image -%}
+      {{ section.settings.product.featured_image | image_url: width: 800 | image_tag: loading: 'lazy' }}
+    {%- endif -%}
+  </div>
+
+  <div class="build-spotlight__content">
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% stylesheet %}
+  .build-spotlight {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--build-spotlight-gap, 24px);
+    background: var(--build-spotlight-bg);
+    padding: 24px;
+
+    @media screen and (min-width: 750px) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .build-spotlight--reverse {
+    @media screen and (min-width: 750px) {
+      direction: rtl;
+    }
+
+    .build-spotlight__content {
+      direction: ltr;
+    }
+  }
+
+  .build-spotlight__media img {
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  .build-spotlight__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--build-spotlight-gap, 24px);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.build_spotlight",
+  "tag": "section",
+  "blocks": [
+    { "type": "build-story" },
+    { "type": "build-spec-highlight" },
+    { "type": "build-question" },
+    { "type": "build-variant-picker" }
+  ],
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "t:settings.product"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "t:settings.layout_style",
+      "options": [
+        { "value": "standard", "label": "t:options.left" },
+        { "value": "reverse", "label": "t:options.right" }
+      ],
+      "default": "standard"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "t:settings.gap",
+      "min": 0,
+      "max": 64,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings.background_color"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.build_spotlight",
+      "blocks": [
+        { "type": "build-story" },
+        { "type": "build-spec-highlight" },
+        { "type": "build-question" },
+        { "type": "build-variant-picker" }
+      ]
+    }
+  ]
+}
+{% endschema %}
