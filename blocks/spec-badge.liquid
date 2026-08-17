@@ -1,0 +1,58 @@
+{% doc %}
+  Renders a small spec badge pulling the Actuation Force metafield from a selected product.
+  Reusable on product pages or anywhere a spec needs highlighting.
+{% enddoc %}
+
+{% if block.settings.product.metafields.custom.actuation_force != blank %}
+  <span class="spec-badge spec-badge--{{ block.settings.badge_style }}">
+    <strong>Actuation Force:</strong> {{ block.settings.product.metafields.custom.actuation_force.value }}g
+  </span>
+{% endif %}
+
+{% stylesheet %}
+  .spec-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    margin: 2px;
+  }
+
+  .spec-badge--solid {
+    background: #000;
+    color: #fff;
+  }
+
+  .spec-badge--outline {
+    border: 1px solid #000;
+    color: #000;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.spec_badge",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "t:settings.product"
+    },
+    {
+      "type": "select",
+      "id": "badge_style",
+      "label": "t:settings.badge_style",
+      "options": [
+        { "value": "solid", "label": "t:options.solid" },
+        { "value": "outline", "label": "t:options.outline" }
+      ],
+      "default": "solid"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.spec_badge"
+    }
+  ]
+}
+{% endschema %}

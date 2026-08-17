@@ -1,0 +1,69 @@
+{% doc %}
+  Renders a card showing one keyboard switch type, pulling data from a linked Switch Profile metaobject entry.
+  Intended for use inside the Switch Showcase section.
+{% enddoc %}
+
+{% if block.settings.switch_profile != blank %}
+  <div class="switch-card" style="--switch-card-color: {{ block.settings.switch_color | default: '#000000' }};">
+    {% if block.settings.image %}
+      <div class="switch-card__image">
+       {{ block.settings.image | image_url: width: 300 | image_tag: loading: 'lazy', width: 300, height: 300 }}
+      </div>
+    {% endif %}
+    <h3 class="switch-card__name">{{ block.settings.switch_profile.switch_name.value }}</h3>
+    <p class="switch-card__feel">{{ block.settings.switch_profile.feel_description.value }}</p>
+  </div>
+{% endif %}
+
+{% stylesheet %}
+  .switch-card {
+    border: 2px solid var(--switch-card-color, #000);
+    border-radius: 8px;
+    padding: 16px;
+    max-width: 240px;
+  }
+
+  .switch-card__image img {
+    width: 100%;
+    border-radius: 4px;
+  }
+
+  .switch-card__name {
+    margin: 8px 0 4px;
+  }
+
+  .switch-card__feel {
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.switch_card",
+  "settings": [
+    {
+      "type": "metaobject",
+      "id": "switch_profile",
+      "metaobject_type": "switch_profile",
+      "label": "t:settings.switch_profile"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:settings.image"
+    },
+    {
+      "type": "color",
+      "id": "switch_color",
+      "label": "t:settings.switch_color",
+      "default": "#000000"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.switch_card"
+    }
+  ]
+}
+{% endschema %}

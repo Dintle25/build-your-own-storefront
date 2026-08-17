@@ -1,0 +1,32 @@
+{% if block.settings.product != blank %}
+  <div class="build-variant-picker">
+    {% content_for 'block', type: 'variant-picker', id: 'build-spotlight-variant-picker', closest.product: block.settings.product %}
+    {% content_for 'block', type: 'buy-buttons', id: 'build-spotlight-buy-buttons', closest.product: block.settings.product %}
+  </div>
+{% endif %}
+
+{% stylesheet %}
+  .build-variant-picker {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.build_variant_picker",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "t:settings.product"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.build_variant_picker"
+    }
+  ]
+}
+{% endschema %}

@@ -294,6 +294,67 @@
         "padding-block-end": 48
       }
     },
+    "switch_showcase_VBR6MB": {
+      "type": "switch-showcase",
+      "blocks": {
+        "spec_badge_HY3dwF": {
+          "type": "spec-badge",
+          "name": "t:names.spec_badge",
+          "settings": {
+            "product": "vantage-tkl-mechanical-keyboard",
+            "badge_style": "solid"
+          },
+          "blocks": {}
+        },
+        "sound_meter_RbRPnp": {
+          "type": "sound-meter",
+          "name": "t:names.sound_meter",
+          "settings": {
+            "noise_level": 3
+          },
+          "blocks": {}
+        },
+        "switch_card_YJWCKW": {
+          "type": "switch-card",
+          "name": "t:names.switch_card",
+          "settings": {
+            "switch_profile": "tactile",
+            "switch_color": "#000000"
+          },
+          "blocks": {}
+        },
+        "switch_card_PyP4Jp": {
+          "type": "switch-card",
+          "name": "t:names.switch_card",
+          "settings": {
+            "switch_profile": "",
+            "switch_color": "#000000"
+          },
+          "blocks": {}
+        },
+        "switch_card_BdwJLY": {
+          "type": "switch-card",
+          "name": "t:names.switch_card",
+          "settings": {
+            "switch_profile": "",
+            "switch_color": "#000000"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "spec_badge_HY3dwF",
+        "sound_meter_RbRPnp",
+        "switch_card_YJWCKW",
+        "switch_card_PyP4Jp",
+        "switch_card_BdwJLY"
+      ],
+      "name": "t:names.switch_showcase",
+      "settings": {
+        "layout_direction": "row",
+        "gap": 16
+      }
+    },
     "hero_PizUa9": {
       "type": "hero",
       "blocks": {
@@ -407,11 +468,146 @@
         "padding-block-start": 0,
         "padding-block-end": 40
       }
+    },
+    "build_spotlight_UaxmFx": {
+      "type": "build-spotlight",
+      "blocks": {
+        "build_story_zpmtyQ": {
+          "type": "build-story",
+          "settings": {
+            "heading": "Built from real wood",
+            "story": "<p>Every Ember keyboard starts as a block of walnut...</p>"
+          },
+          "blocks": {}
+        },
+        "build_spec_highlight_yXzFeh": {
+          "type": "build-spec-highlight",
+          "settings": {
+            "product": "ember-wooden-frame-mechanical-keyboard"
+          },
+          "blocks": {}
+        },
+        "build_question_tgAAYP": {
+          "type": "build-question",
+          "settings": {
+            "faq_entry": "does-the-wood-affect-the-sound"
+          },
+          "blocks": {}
+        },
+        "build_variant_picker_EEVeEJ": {
+          "type": "build-variant-picker",
+          "settings": {
+            "product": "ember-wooden-frame-mechanical-keyboard"
+          },
+          "blocks": {
+            "build-spotlight-variant-picker": {
+              "type": "variant-picker",
+              "static": true,
+              "settings": {
+                "variant_style": "buttons",
+                "show_swatches": true,
+                "option_label_text_color": "",
+                "variant_style_class": "default",
+                "custom_variant_background": "{{ settings.color_palette.background }}",
+                "custom_variant_text": "{{ settings.color_palette.foreground }}",
+                "custom_variant_border": "{{ settings.color_palette.foreground }}",
+                "selected_variant_style_class": "default",
+                "custom_selected_variant_background": "{{ settings.color_palette.foreground }}",
+                "custom_selected_variant_text": "{{ settings.color_palette.background }}",
+                "custom_selected_variant_border": "{{ settings.color_palette.foreground }}",
+                "alignment": "left",
+                "padding-block-start": 0,
+                "padding-block-end": 8,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "build-spotlight-buy-buttons": {
+              "type": "buy-buttons",
+              "static": true,
+              "settings": {
+                "stacking": false,
+                "text_color": "",
+                "show_pickup_availability": true,
+                "gift_card_form": true,
+                "recipient_button_style": "default",
+                "recipient_button_background": "{{ settings.color_palette.background }}",
+                "recipient_button_text": "{{ settings.color_palette.foreground }}",
+                "recipient_button_border": "{{ settings.color_palette.foreground }}",
+                "selected_recipient_button_style": "default",
+                "selected_recipient_button_background": "{{ settings.color_palette.foreground }}",
+                "selected_recipient_button_text": "{{ settings.color_palette.background }}",
+                "selected_recipient_button_border": "{{ settings.color_palette.foreground }}",
+                "input_style": "default",
+                "input_background_color": "{{ settings.color_palette.background }}",
+                "input_text_color": "{{ settings.color_palette.foreground }}",
+                "input_border_color": "{{ settings.color_palette.foreground }}",
+                "border_width": 1,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "quantity": {
+                  "type": "quantity",
+                  "static": true,
+                  "settings": {
+                    "input_style": "default",
+                    "input_background_color": "{{ settings.color_palette.background }}",
+                    "input_text_color": "{{ settings.color_palette.foreground }}",
+                    "input_border_color": "{{ settings.color_palette.foreground }}",
+                    "border_width": 1,
+                    "border_radius": 0
+                  },
+                  "blocks": {}
+                },
+                "add-to-cart": {
+                  "type": "add-to-cart",
+                  "static": true,
+                  "settings": {
+                    "style_class": "button-secondary",
+                    "custom_button_background": "{{ settings.color_palette.foreground }}",
+                    "custom_button_text": "{{ settings.color_palette.background }}",
+                    "custom_button_border": "{{ settings.color_palette.background }}"
+                  },
+                  "blocks": {}
+                },
+                "accelerated-checkout": {
+                  "type": "accelerated-checkout",
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
+                }
+              },
+              "block_order": []
+            }
+          },
+          "block_order": []
+        }
+      },
+      "block_order": [
+        "build_story_zpmtyQ",
+        "build_spec_highlight_yXzFeh",
+        "build_question_tgAAYP",
+        "build_variant_picker_EEVeEJ"
+      ],
+      "name": "t:names.build_spotlight",
+      "settings": {
+        "product": "ember-wooden-frame-mechanical-keyboard",
+        "layout": "standard",
+        "gap": 24,
+        "background_color": ""
+      }
     }
   },
   "order": [
     "hero_jVaWmY",
     "product_list_fa6P9H",
-    "hero_PizUa9"
+    "switch_showcase_VBR6MB",
+    "hero_PizUa9",
+    "build_spotlight_UaxmFx"
   ]
 }

@@ -1,0 +1,56 @@
+<div class="switch-showcase switch-showcase--{{ section.settings.layout_direction }}" style="--switch-showcase-gap: {{ section.settings.gap }}px;">
+  <div class="switch-showcase__grid">
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% stylesheet %}
+  .switch-showcase__grid {
+    display: flex;
+    gap: var(--switch-showcase-gap, 16px);
+    flex-wrap: wrap;
+  }
+
+  .switch-showcase--grid .switch-showcase__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.switch_showcase",
+  "tag": "section",
+  "blocks": [
+    { "type": "@theme" }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "layout_direction",
+      "label": "t:settings.layout_direction",
+      "options": [
+        { "value": "row", "label": "t:options.row" },
+        { "value": "grid", "label": "t:options.grid" }
+      ],
+      "default": "row"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "t:settings.gap",
+      "min": 0,
+      "max": 64,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.switch_showcase",
+      "category": "t:categories.product"
+    }
+  ]
+}
+{% endschema %}

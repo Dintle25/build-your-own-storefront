@@ -58,6 +58,12 @@
     assign use_currency = true
   endif
 
+  assign savings_percent = 0
+  if show_compare_price
+    assign raw_savings = selected_variant.compare_at_price | minus: selected_variant.price
+    assign savings_percent = raw_savings | times: 100.0 | divided_by: selected_variant.compare_at_price | round
+  endif
+
   # Format all prices
   if use_currency
     assign price = price | money_with_currency
@@ -105,6 +111,9 @@
         <span class="price-item__group price">
           <span class="visually-hidden">{{ 'content.price_sale' | t }}&nbsp;</span>
           {{ price | default: '&nbsp;' }}
+        </span>
+        <span class="price-item__group savings">
+          You save {{ savings_percent }}%
         </span>
       {% endif %}
     {% else %}

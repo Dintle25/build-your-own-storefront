@@ -1,5 +1,11 @@
+
 {
-  "current": "Default",
+  "current": {
+    "cart_type": "drawer",
+    "enable_free_shipping_bar": true,
+    "free_shipping_threshold": 500,
+    "content_for_index": []
+  },
   "presets": {
     "Default": {}
   }
