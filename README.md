@@ -155,3 +155,18 @@ Product page variant picker, using blocks/variant-picker.liquid's show_swatches 
 We are not creating a new section or block for filtering because sections/main-collection.liquid already calls content_for 'block', type: 'filters', which renders the existing blocks/filters.liquid — a fully built filtering and sorting UI with its own settings.
 
 Swatch data comes directly from each product's option values in Shopify Admin — blocks/swatches.liquid checks product_option.values | map: 'swatch' and only renders swatches if a real swatch image/color has been assigned to that option value.
+
+## 1.7.8----------------------------------------------------------------------------------------------------
+# Step 2.5 — Logged Results
+
+Before:
+
+Theme check: 0 errors, 0 warnings
+Performance: 86, Accessibility: 95, Best Practices: 73, SEO: 61
+
+After:
+
+Theme check: 0 errors, 0 warnings
+Performance: 75, Accessibility: 89, Best Practices: 73, SEO: 85
+
+Net result: SEO improved significantly (+24 points) from adding explicit alt text and image dimensions. Performance and Accessibility saw small drops, likely due to natural Lighthouse run-to-run variance combined with the fetchpriority: 'high' change on the Build Spotlight product image. Best Practices remained unchanged, since the flagged console errors (GraphQL 400, preload warning) originate from stock Horizon code, not files edited during this course.

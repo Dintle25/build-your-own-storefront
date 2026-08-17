@@ -7,7 +7,7 @@
 >
   <div class="build-spotlight__media">
     {%- if section.settings.product.featured_image -%}
-      {{ section.settings.product.featured_image | image_url: width: 800 | image_tag: loading: 'lazy' }}
+     {{ section.settings.product.featured_image | image_url: width: 800 | image_tag: alt: section.settings.product.title, width: 800, height: 800, loading: 'lazy' }}
     {%- endif -%}
   </div>
 

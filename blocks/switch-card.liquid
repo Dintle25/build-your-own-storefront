@@ -7,7 +7,7 @@
   <div class="switch-card" style="--switch-card-color: {{ block.settings.switch_color | default: '#000000' }};">
     {% if block.settings.image %}
       <div class="switch-card__image">
-        {{ block.settings.image | image_url: width: 300 | image_tag: loading: 'lazy' }}
+       {{ block.settings.image | image_url: width: 300 | image_tag: loading: 'lazy', width: 300, height: 300 }}
       </div>
     {% endif %}
     <h3 class="switch-card__name">{{ block.settings.switch_profile.switch_name.value }}</h3>
